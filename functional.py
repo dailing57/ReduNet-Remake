@@ -57,7 +57,7 @@ def get_samples(dataset, num_samples, shuffle=False, batch_idx=0, seed=0, method
 
 def normalize(X, p=2):
     if isinstance(X, torch.Tensor):
-        norm = torch.linalg.norm(X.flatten(1), ord=p, axis=1)
+        norm: torch.Tensor = torch.linalg.norm(X.flatten(1), ord=p, axis=1)
         norm = norm.clip(min=1e-8)
         for _ in range(len(X.shape)-1):
             norm = norm.unsqueeze(-1)
